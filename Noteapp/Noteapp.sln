@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Noteapp", "Noteapp\Noteapp.vcxproj", "{46DDD8D9-E364-4B0F-A4D1-DC6B5F6BC052}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mysql-db", "mysql-db\mysql-db.vcxproj", "{AA26B67D-F8B2-477F-B695-15E3AC70B00D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{46DDD8D9-E364-4B0F-A4D1-DC6B5F6BC052}.Debug|Win32.Build.0 = Debug|Win32
 		{46DDD8D9-E364-4B0F-A4D1-DC6B5F6BC052}.Release|Win32.ActiveCfg = Release|Win32
 		{46DDD8D9-E364-4B0F-A4D1-DC6B5F6BC052}.Release|Win32.Build.0 = Release|Win32
+		{AA26B67D-F8B2-477F-B695-15E3AC70B00D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AA26B67D-F8B2-477F-B695-15E3AC70B00D}.Debug|Win32.Build.0 = Debug|Win32
+		{AA26B67D-F8B2-477F-B695-15E3AC70B00D}.Release|Win32.ActiveCfg = Release|Win32
+		{AA26B67D-F8B2-477F-B695-15E3AC70B00D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
