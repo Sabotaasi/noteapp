@@ -102,6 +102,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\libmysql.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\libmysql.lib" />
+    <Library Include="lib\mysqlclient.lib" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
