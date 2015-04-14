@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 		nError = RegCreateKeyEx(HKEY_CURRENT_USER, TEXT("Software\\muistiosofta\\"), NULL, NULL, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &key, NULL);
 		if (nError){
 			cout << registeryerrormsg << endl;
+			return 0;
 		}
 
 	}
@@ -78,8 +79,8 @@ int main(int argc, char *argv[])
 		}
 	}
 	else if (argc > 1 && string(argv[1]) == "-lo"){
-		//logout
-		//pyyhi rekisteri
+		RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)"0", 1);
+		RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)"0", 1);
 		return 0;
 	}
 	else if (argc > 1 && string(argv[1]) == "-h"){
@@ -88,7 +89,7 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
-	if (user->isLoggedIn() == 0){
+	if (user->isLoggedIn() != 0){
 		//kirjoita rekisteriin tunnarit
 		RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)pw.c_str(), pw.length() + 1);
 		RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)uname.c_str(), uname.length() + 1);
@@ -96,6 +97,8 @@ int main(int argc, char *argv[])
 		if (argc > 1 + offset && string(argv[offset + 1]) == "-du"){
 			//delete user
 			user->deleteMe();
+			RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)"0", 1);
+			RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)"0", 1);
 		}
 		else if (argc > 1 + offset && string(argv[offset + 1]) == "-w"){
 			//write new
@@ -121,11 +124,10 @@ int main(int argc, char *argv[])
 	else{
 		cout << failloginmsg << endl;
 	}
-
-	getchar();
 	return 0;
 }
 
 void printHelp(){
 	cout << helpmsg << endl;
+	getchar();
 }
