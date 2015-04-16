@@ -43,6 +43,9 @@
     <None Include="lib\libmysql.dll">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="makefile">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\libmysql.lib">

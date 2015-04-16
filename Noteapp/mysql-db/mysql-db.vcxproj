@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\libmysql.dll" />
+    <None Include="makefile" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\libmysql.lib" />
