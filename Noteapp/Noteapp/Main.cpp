@@ -11,12 +11,30 @@ string failloginmsg = "Wrong username or password";
 string createfailmsg = "Username already exists";
 string createsuccessmsg = "Account was succesfully created";
 string registeryerrormsg = "Registry error";
+string logoffmsg = "Logged off";
+string deleteusrsuccess = "User deleted";
+string deleteusrerror = "Failed to delete user";
+string writemsgsuccess = "Message written";
+string writemsgerror = "Failed to write message";
+string deletemsgsuccess = "Message deleted";
+string deletemsgerror = "Failed to delete message";
+string errorreadmsg = "Failed to read message";
+string errorlistmsgs = "Failed to list all messages";
 #else
 string helpmsg = "help\nmsg\nfi";
 string failloginmsg = "Vaara kayttajanimi tai salasana";
 string createfailmsg = "Kayttajanimi on jo olemassa";
 string createsuccessmsg = "Kayttajatilin luonti onnistui";
 string registeryerrormsg = "Rekisterivirhe";
+string logoffmsg = "Kirjauduttu ulos";
+string deleteusrsuccess = "Kayttaja poistettu";
+string deleteusrerror = "Kayttajan poisto epaonnistui";
+string writemsgsuccess = "Viesti kirjoitettu";
+string writemsgerror = "Viestin kirjoitus epaonnistui";
+string deletemsgsuccess = "Viesti poistettu";
+string deletemsgerror = "Viestin poisto epaonnistui";
+string errorreadmsg = "Viestin luku epaonnistui";
+string errorlistmsgs = "Viestien luku epaonnistui";
 #endif
 
 int main(int argc, char *argv[])
@@ -60,9 +78,10 @@ int main(int argc, char *argv[])
 		pw = string(password);
 	}
 
+	//luodaan user olio rekisteritiedoista tai 0,0 (tyhjä)
 	User* user = new User(uname, pw);
 	if (argc > 1 && string(argv[1]) == "-u" && string(argv[3]) == "-p"){
-		//login
+		//jos käyttäjä syöttää tunnuksen ja salasanan, korvataan user olion tiedot niillä
 		uname = string(argv[2]);
 		pw = string(argv[4]);
 		user = new User(uname, pw);
@@ -71,6 +90,9 @@ int main(int argc, char *argv[])
 			//create user
 			if (user->createMe() != 0){
 				cout << createsuccessmsg << endl;
+				//kirjoita rekisteriin tunnarit
+				RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)pw.c_str(), pw.length() + 1);
+				RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)uname.c_str(), uname.length() + 1);
 			}
 			else{
 				cout << createfailmsg << endl;
@@ -81,6 +103,7 @@ int main(int argc, char *argv[])
 	else if (argc > 1 && string(argv[1]) == "-lo"){
 		RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)"0", 1);
 		RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)"0", 1);
+		cout << logoffmsg << endl;
 		return 0;
 	}
 	else if (argc > 1 && string(argv[1]) == "-h"){
@@ -88,33 +111,73 @@ int main(int argc, char *argv[])
 		printHelp();
 		return 0;
 	}
-
-	if (user->isLoggedIn() != 0){
+	int userId = user->authenticate();
+	
+	if (userId != 0){
 		//kirjoita rekisteriin tunnarit
 		RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)pw.c_str(), pw.length() + 1);
 		RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)uname.c_str(), uname.length() + 1);
-
+		user->setUserId(userId);
 		if (argc > 1 + offset && string(argv[offset + 1]) == "-du"){
 			//delete user
-			user->deleteMe();
+			int error = user->deleteMe();
 			RegSetValueExA(key, "muistio_password", 0, REG_SZ, (const BYTE*)"0", 1);
 			RegSetValueExA(key, "muistio_username", 0, REG_SZ, (const BYTE*)"0", 1);
+			if (error == 1){
+				cout << deleteusrsuccess << endl;
+			}
+			else{
+				cout << deleteusrerror << endl;
+			}
 		}
 		else if (argc > 1 + offset && string(argv[offset + 1]) == "-w"){
 			//write new
-			user->writeNew(string(argv[offset + 2]));
+			int error = user->writeNew(string(argv[offset + 2]));
+			if (error == 1){
+				cout << writemsgsuccess << endl;
+			}
+			else{
+				cout << writemsgerror << endl;
+			}
 		}
 		else if (argc > 1 + offset && string(argv[offset + 1]) == "-r"){
 			//read id
-			user->readMsg(atoi(argv[offset + 2]));
+			string msg = user->readMsg(atoi(argv[offset + 2]));
+			if (!strcmp("0", msg.c_str())){
+				cout << errorreadmsg << endl;
+			}
+			else{
+				cout << msg << endl;
+			}
+			
 		}
 		else if (argc > 1 + offset && string(argv[offset + 1]) == "-d"){
 			//delete id
-			user->deleteMsg(atoi(argv[offset + 2]));
+			int error = user->deleteMsg(atoi(argv[offset + 2]));
+			if (error == 1){
+				cout << deletemsgsuccess << endl;
+			}
+			else{
+				cout << deletemsgerror << endl;
+			}
 		}
 		else if (argc > 1 + offset && string(argv[offset + 1]) == "-l"){
-			//list all
-			user->listAllMsgs();
+			//list all msgs of usr
+			
+			string messages = user->listAllMsgs();
+			if (!strcmp("0", messages.c_str())){
+				cout << errorlistmsgs << endl;
+			}
+			else{
+				char buf[sizeof(messages)+1];
+				strncpy(buf, messages.c_str(), sizeof(buf));
+				buf[sizeof(buf)-1] = 0;
+				char* token = strtok(buf, ";");
+				while (token != NULL){
+					cout << token << endl;
+					token = strtok(NULL, ";");
+				}
+			}
 		}
 		else{
 			printHelp();
@@ -129,5 +192,4 @@ int main(int argc, char *argv[])
 
 void printHelp(){
 	cout << helpmsg << endl;
-	getchar();
 }

@@ -6,7 +6,6 @@
 #define DATABASE "user_heinhei1"
 
 #include <string>
-#include <mysql.h>
 using namespace std;
 
 namespace mysql_functions
@@ -21,6 +20,7 @@ namespace mysql_functions
 		static DEX int deleteMessage(int id);
 		static DEX string listMessages(int userId);
 		static DEX int authenticate(string username, string password);
+		static DEX int usernameExists(string username);
 	};
 }
 
