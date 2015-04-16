@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['seq_5fread_5fappend',['SEQ_READ_APPEND',['../my__sys_8h.html#a133be589b3d6c576450c0b6b75a355e7a134aee5fa177b344cccc5e4b516cd75b',1,'my_sys.h']]],
+  ['session_5ftrack_5fschema',['SESSION_TRACK_SCHEMA',['../mysql__com_8h.html#a1c6cf2629b0bda6da6788a25725d6b7fa6b8bcbaf7fdc6f22f472ec00fe86892e',1,'mysql_com.h']]],
+  ['session_5ftrack_5fstate_5fchange',['SESSION_TRACK_STATE_CHANGE',['../mysql__com_8h.html#a1c6cf2629b0bda6da6788a25725d6b7fab226cb02bce4e87526fcd8aebf071c6e',1,'mysql_com.h']]],
+  ['session_5ftrack_5fsystem_5fvariables',['SESSION_TRACK_SYSTEM_VARIABLES',['../mysql__com_8h.html#a1c6cf2629b0bda6da6788a25725d6b7faf5db7e3d564b77cb9bff54a4ca698f78',1,'mysql_com.h']]],
+  ['shutdown_5fdefault',['SHUTDOWN_DEFAULT',['../mysql__com_8h.html#a06133bb686f1030c73086378cab8d27bafe7c819d6a671c7cc7a20acce7a820d0',1,'mysql_com.h']]],
+  ['shutdown_5fwait_5fall_5fbuffers',['SHUTDOWN_WAIT_ALL_BUFFERS',['../mysql__com_8h.html#a06133bb686f1030c73086378cab8d27ba53278544a490a2af7b32bb2c11a837a7',1,'mysql_com.h']]],
+  ['shutdown_5fwait_5fconnections',['SHUTDOWN_WAIT_CONNECTIONS',['../mysql__com_8h.html#a06133bb686f1030c73086378cab8d27ba82d161500981396a7e5173346b1ae547',1,'mysql_com.h']]],
+  ['shutdown_5fwait_5fcritical_5fbuffers',['SHUTDOWN_WAIT_CRITICAL_BUFFERS',['../mysql__com_8h.html#a06133bb686f1030c73086378cab8d27ba06b8bfb99a945984f3af5848a26bd8b4',1,'mysql_com.h']]],
+  ['shutdown_5fwait_5ftransactions',['SHUTDOWN_WAIT_TRANSACTIONS',['../mysql__com_8h.html#a06133bb686f1030c73086378cab8d27baa541fbc6833b6ce83c9e7152235ffedc',1,'mysql_com.h']]],
+  ['shutdown_5fwait_5fupdates',['SHUTDOWN_WAIT_UPDATES',['../mysql__com_8h.html#a06133bb686f1030c73086378cab8d27bad4ab34d8900aaa6d3c11a5ebf6088745',1,'mysql_com.h']]],
+  ['stmt_5fattr_5fcursor_5ftype',['STMT_ATTR_CURSOR_TYPE',['../mysql_8h.html#a6a817651ddd965cbe062659e174ff92fab438ec55961a1dfc64c3d11bad080b66',1,'mysql.h']]],
+  ['stmt_5fattr_5fprefetch_5frows',['STMT_ATTR_PREFETCH_ROWS',['../mysql_8h.html#a6a817651ddd965cbe062659e174ff92fa09126057589656d0fbf03be26a78a116',1,'mysql.h']]],
+  ['stmt_5fattr_5fupdate_5fmax_5flength',['STMT_ATTR_UPDATE_MAX_LENGTH',['../mysql_8h.html#a6a817651ddd965cbe062659e174ff92fa65ee8085ca508e83a7a05bd9260c8c9a',1,'mysql.h']]],
+  ['stream_5fby_5ffdopen',['STREAM_BY_FDOPEN',['../my__sys_8h.html#aaf047b6ce458f7c55fd215920656d128a80665731ff92339a30e218d08f323b0c',1,'my_sys.h']]],
+  ['stream_5fby_5ffopen',['STREAM_BY_FOPEN',['../my__sys_8h.html#aaf047b6ce458f7c55fd215920656d128ad54a13312d1e951856ce4f593b880557',1,'my_sys.h']]],
+  ['string_5fresult',['STRING_RESULT',['../mysql__com_8h.html#ac852cc9149359bbfde83ad6ff646fd62a2f590d5f6111b8e455a2f28dfd6b2022',1,'mysql_com.h']]]
+];
