@@ -31,5 +31,8 @@
     <None Include="makefile">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\out\Setup.exe">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
