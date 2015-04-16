@@ -6,7 +6,7 @@ using namespace std;
 
 void printHelp();
 #ifdef eng
-string helpmsg = "help\nmsg\neng";
+string helpmsg = "-u (user) -p (password) /After first input saved to registery\n-lo (logout) /Log off\n-h (hjalp) / This hjalpmessage\n-nu (new user) /Creation of new account ex: -u erkki -p esim -nu\n-w (write) [string] / Write new message ex: -u erkki -p esim -w viesti tai -w viesti\n- r (read) [id] / Read message ex: -u erkki -p esim -r 1 tai -r 1\n-d (delete) [id] / Delete message ex: -u erkki -p esim -d 1 tai -d 1\n-l (list all) / List all messages ex: -u erkki -p esim -l tai -l\n-du (delete user) / Delete own account ex:: -u erkki -p esim -du tai -du\n";
 string failloginmsg = "Wrong username or password";
 string createfailmsg = "Username already exists";
 string createsuccessmsg = "Account was succesfully created";
@@ -21,7 +21,7 @@ string deletemsgerror = "Failed to delete message";
 string errorreadmsg = "Failed to read message";
 string errorlistmsgs = "Failed to list all messages";
 #else
-string helpmsg = "help\nmsg\nfi";
+string helpmsg = "-u (user) -p (password) //Ensimmaisen syoton jalkeen tallentuu rekisteriin\n- lo(logout) /Kirjaudu ulos\n- h(hjalp) / Tama hjalpviesti\n- nu(new user) /Uuden kayttajan luonti esim: -u erkki -p esim -nu\n- w(write)[string] / Kirjoita uusi viesti esim: -u erkki -p esim -w viesti tai -w viesti\n- r(read)[id] / Lue viesti esim: -u erkki -p esim -r 1 tai -r 1\n- d(delete)[id] / Poista viesti esim: -u erkki -p esim -d 1 tai -d 1\n- l(list all) / Listaa kaikki viestit esim: -u erkki -p esim -l tai -l\n- du(delete user) / Poista oma kayttajatili esim: -u erkki -p esim -du tai -du\n";
 string failloginmsg = "Vaara kayttajanimi tai salasana";
 string createfailmsg = "Kayttajanimi on jo olemassa";
 string createsuccessmsg = "Kayttajatilin luonti onnistui";
