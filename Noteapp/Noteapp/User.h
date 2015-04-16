@@ -11,16 +11,18 @@ public:
 	string getUsername(){ return this->username; }
 	void setUsername(string username){ this->username = username; }
 	void setPassword(string password){ this->password = password; }
+	void setUserId(int userId){ this->userId = userId; }
 	int createMe();
 	int deleteMe();
 	int writeNew(string msg);
 	string readMsg(int id);
 	int deleteMsg(int id);
 	string listAllMsgs();
-	int isLoggedIn();
+	int authenticate();
 private:
 	string username;
 	string password;
+	int userId;
 
 };
 

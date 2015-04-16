@@ -1,5 +1,5 @@
 #include "User.h"
-
+#include "mysqlFunctions.h"
 
 User::User()
 {
@@ -21,7 +21,12 @@ Create current user into database
 */
 int User::createMe(){
 	//save me
-	return 0;
+	if (!mysql_functions::mysqlFunctions::usernameExists(this->username)){
+		return mysql_functions::mysqlFunctions::createUser(this->username, this->password);
+	}
+	else{
+		return 0;
+	}
 }
 /**
 Delte current user from database
@@ -29,7 +34,8 @@ Delte current user from database
 */
 int User::deleteMe(){
 	//save me
-	return 0;
+	return mysql_functions::mysqlFunctions::deleteUser(this->userId);
+
 }
 /**
 Write new message to database
@@ -37,7 +43,8 @@ Write new message to database
 @return msgId
 */
 int User::writeNew(string msg){
-	return 0;
+
+	return mysql_functions::mysqlFunctions::writeMessage(this->userId, msg);
 }
 /**
 Read message from database
@@ -45,7 +52,7 @@ Read message from database
 @return message
 */
 string User::readMsg(int id){
-	return "";
+	return mysql_functions::mysqlFunctions::readMessage(id);
 }
 /**
 Delete message from database
@@ -53,21 +60,21 @@ Delete message from database
 @return 0 || 1, fail || success
 */
 int User::deleteMsg(int id){
-	return 0;
+	return mysql_functions::mysqlFunctions::deleteMessage(id);
 }
 /**
 Get all messages from user
 @return messages
 */
 string User::listAllMsgs(){
-	return "";
+	return mysql_functions::mysqlFunctions::listMessages(this->userId);
 }
 /**
 Check if userinfo authenticates from database
 @return userId
 */
-int User::isLoggedIn(){
-	return 1;
+int User::authenticate(){
+	return mysql_functions::mysqlFunctions::authenticate(this->username, this->password);
 }
 
 User::~User()
