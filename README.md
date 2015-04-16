@@ -6,8 +6,8 @@ Heinonen Heikki 1001026 and Pullinen Mikko 1102276
 
 Usage:
 
--u (user) -p (password) /After first input saved to registery
--lo (logout) /Log off
+-u (user) -p (password) /After first input saved to registery<br>
+-lo (logout) /Log off<br>
 -h (hjalp) /This hjalpmessage
 -nu (new user) /Creation of new account ex: -u erkki -p esim -nu
 -w (write) [string] /Write new message ex: -u erkki -p esim -w viesti tai -w viesti
